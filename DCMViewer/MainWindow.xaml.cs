@@ -13,6 +13,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Data;
+using Dicom;
+using Dicom.Imaging;
 
 namespace DCMViewer
 {
@@ -25,6 +27,7 @@ namespace DCMViewer
         const string WORKINGDIRECTORY = @"F:\wd\";
         const string TEMPDIRECTORY = @"F:\temp\";
         DBUtility db = new DBUtility();
+        DicomImage di;
 
         public MainWindow()
         {
@@ -44,11 +47,14 @@ namespace DCMViewer
                 string fileName = dlg.FileName;
                 decoder = new DCMDecoder();
                 decoder.DicomFileName = fileName;
-                image1.Source = decoder.CreateBipmap(decoder.pixels16, decoder.width, decoder.height);
                 image1.Height = decoder.height;
                 image1.Width = decoder.width;
-                List<string> str = decoder.dicomInfo;
+                di = new DicomImage(fileName);
+                image1.Source = di.RenderImageSource();
+                line1.Visibility = System.Windows.Visibility.Visible;
+                label1.Content =  GetLength(1).ToString() + " cm";
 
+                List<string> str = decoder.dicomInfo;
                 List<PicTag> picTags = new List<PicTag>();
                 string s1, s4, s5, s11, s12;
 
@@ -80,8 +86,10 @@ namespace DCMViewer
 
         private void button4_Click(object sender, RoutedEventArgs e)
         {
-            image1.Height = 400;
+            double radio = di.Width / 400.0;
             image1.Width = 400;
+            image1.Height = di.Height / di.Width * 400;
+            label1.Content = GetLength(radio).ToString() + " cm";
         }
 
         private void button_import_Click(object sender, RoutedEventArgs e)
@@ -141,6 +149,35 @@ namespace DCMViewer
                 picTags.Add(picTag);
             }
             this.dataGrid1.ItemsSource = picTags;
+        }
+
+        private double GetLength(double radio)
+        {
+            double scale = 0;
+            double length;
+            DicomTag dt = new DicomTag(0x0028, 0x0030);
+            DicomItem pixelSpacing = di.Dataset.Get<DicomItem>(dt);
+
+            DicomTag dt2 = new DicomTag(0x0018, 0x1164);
+            DicomItem imagerPixelSpacing = di.Dataset.Get<DicomItem>(dt2);
+
+            if (imagerPixelSpacing is DicomElement)
+            {
+                DicomElement de = imagerPixelSpacing as DicomElement;
+                double[] s = de.Get<double[]>();
+                scale = s[0];
+            }
+
+            if (pixelSpacing is DicomElement)
+            {
+                DicomElement de = pixelSpacing as DicomElement;
+                double[] s = de.Get<double[]>();
+                scale = s[0];
+            }
+
+            length = 10 * scale * radio;
+
+            return length;
         }
     }
 
