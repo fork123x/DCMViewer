@@ -4,7 +4,7 @@
         Title="MainWindow" Height="667" Width="971" HorizontalAlignment="Center" VerticalAlignment="Top" ResizeMode="NoResize">
 
     <Grid>
-        <Line Name="line1" Stroke="Blue" X1="900" Y1="100" X2="900" Y2="200" StrokeThickness="1" Panel.ZIndex="5" Margin="-4,-12,4,12" Visibility="Hidden"/>
+        <Line Name="line1" Stroke="Blue" X1="900" Y1="100" X2="900" Y2="200" StrokeThickness="1" Panel.ZIndex="5" Visibility="Hidden"/>
         <StackPanel Margin="0,0,0,-37">
             <Menu Height="23" HorizontalAlignment="Left" Name="menu1" VerticalAlignment="Top" Width="400">
                 <MenuItem Header="操作">
@@ -48,6 +48,8 @@
                 <Button Content="缩小" Height="23" Name="button3" Width="75" />
                 <Button Content="适合窗口" Height="23" Name="button4" Width="75" Click="button4_Click" />
                 <Button Content="导入" Height="23" Name="button_import" Width="75" Click="button_import_Click" />
+                <Button Content="打开压缩" Height="23" HorizontalAlignment="Left" Name="button9" VerticalAlignment="Top" Width="75" Click="button9_Click" />
+                <Button Content="Test" Height="23" HorizontalAlignment="Left" Name="button10" VerticalAlignment="Top" Width="75" Click="button10_Click" />
             </StackPanel>
         </StackPanel>
         <Label Height="28" HorizontalAlignment="Left" Margin="877,193,0,0" VerticalAlignment="Top" Panel.ZIndex="5" Width="60" Name="label1" />
