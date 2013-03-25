@@ -10,7 +10,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.IO;
 using System.Data;
 using Dicom;
@@ -24,8 +23,9 @@ namespace DCMViewer
     /// </summary>
     public partial class MainWindow : Window
     {
-        const string WORKINGDIRECTORY = @"F:\wd\";
-        const string TEMPDIRECTORY = @"F:\temp\";
+        const string WORKINGDIRECTORY = @"F:\wd\dcms\";
+        const string TEMPDIRECTORY = @"F:\wd\temp\";
+        const string DEJPEGEXE = @"F:\wd\dcmdjpeg.exe";
         DBUtility db = new DBUtility();
         DicomImage di;
 
@@ -107,11 +107,11 @@ namespace DCMViewer
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
-                string newName = dlg.FileName + "_temp";
+                string newName = getNewName(dlg.FileName);
                 string arg = dlg.FileName + " " + newName;
 
                 ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.FileName = @"D:\dcmdjpeg.exe";
+                startInfo.FileName = DEJPEGEXE;
                 startInfo.Arguments = arg;
                 startInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
@@ -199,10 +199,16 @@ namespace DCMViewer
             s5 = s3.Substring(ind + 1);
         }
 
+        private string getNewName(string oldName)
+        {
+            string newName = TEMPDIRECTORY + Path.GetFileName(oldName) + "_temp";
+            return newName;
+        }
+
         private void button10_Click(object sender, RoutedEventArgs e)
         {
-            System.IO.File.CreateText("hello.txtx");
-            MessageBox.Show("Hello");
+            string s = getNewName(@"C:\Users\Administrator\Downloads\11_03pu.pdf");
+            MessageBox.Show(s);
         }
     }
 

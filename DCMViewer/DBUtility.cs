@@ -9,7 +9,7 @@ namespace DCMViewer
 {
     class DBUtility
     {
-        string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=F:\\pic.accdb;";
+        string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=F:\\wd\\pic.accdb;";
 
         public bool AppendRecord(string name, string path)
         {
