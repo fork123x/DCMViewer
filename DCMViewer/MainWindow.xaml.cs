@@ -122,8 +122,8 @@ namespace DCMViewer
                     int exitCode = proc.ExitCode;
                 }
 
-                DisplayImageAndTags(newName);
-            }
+                //DisplayImageAndTags(newName);
+            } 
         }
 
         private void DisplayImageAndTags(string fileName)
@@ -205,10 +205,10 @@ namespace DCMViewer
             return newName;
         }
 
+        static int i = 1;
         private void button10_Click(object sender, RoutedEventArgs e)
         {
-            string s = getNewName(@"C:\Users\Administrator\Downloads\11_03pu.pdf");
-            MessageBox.Show(s);
+            image1.Source = di.RenderImageSource(i++);
         }
     }
 
