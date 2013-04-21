@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DCMViewer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("医疗影像工作站")]
+[assembly: AssemblyDescription("医疗图像解析")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("BBS.SUDA123.COM")]
-[assembly: AssemblyProduct("DCMViewer")]
-[assembly: AssemblyCopyright("Copyright © BBS.SUDA123.COM 2013")]
+[assembly: AssemblyCompany("NK")]
+[assembly: AssemblyProduct("医疗影像工作站")]
+[assembly: AssemblyCopyright("Copyright © NK")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

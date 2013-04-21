@@ -1,10 +1,11 @@
 ﻿<Application x:Class="DCMViewer.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="Window1.xaml">
+             StartupUri="MainFrameWindow.xaml" >
+    <!--StartupUri="Window1.xaml">-->
             <!--StartupUri="Window1.xaml">-->
              <!--StartupUri="ImageViewingBoard.xaml" >-->
-             <!--StartupUri="MainWindow.xaml" >-->
+    <!--StartupUri="MainWindow.xaml" >-->
              
     <Application.Resources>
          

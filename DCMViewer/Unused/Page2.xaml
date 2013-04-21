@@ -1,0 +1,201 @@
+﻿<Page x:Class="DCMViewer.Page2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1000"
+	Title="Page2">
+
+    <Grid>
+        <Label Height="28" HorizontalAlignment="Left" Margin="871,206,0,0" VerticalAlignment="Top" Panel.ZIndex="5" Width="73" Name="label1" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Menu Height="30" HorizontalAlignment="Stretch" Name="menu1" VerticalAlignment="Top" Grid.Row="0">
+                <MenuItem Header="布局">
+                    <MenuItem Header="图像布局1x1" />
+                    <MenuItem Header="图像布局1x2" />
+                    <MenuItem Header="图像布局2x1" />
+                    <MenuItem Header="图像布局2x2" />
+                    <MenuItem Header="图像布局3x3" />
+                    <MenuItem Header="图像布局4x4" />
+                    <Separator />
+                    <MenuItem Header="系列布局1x1" />
+                    <MenuItem Header="系列布局1x2" />
+                    <MenuItem Header="系列布局2x1" />
+                    <MenuItem Header="系列布局2x2" />
+                </MenuItem>
+                <MenuItem Header="视图">
+                    <MenuItem Header="标记" />
+                    <MenuItem Header="测量标记" />
+                    <MenuItem Header="标尺" />
+                    <Separator />
+                    <MenuItem Header="放大镜" />
+                    <MenuItem Header="图像索引" />
+                    <Separator />
+                    <MenuItem Header="遮挡板" >
+                        <MenuItem Header="双窗遮挡板" />
+                        <MenuItem Header="自动双窗遮挡板" />
+                        <MenuItem Header="反相遮挡板" />
+                    </MenuItem>
+                    <MenuItem Header="同步模式" >
+                        <MenuItem Header="图像" />
+                        <MenuItem Header="系列" />
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="DICOM信息..." />
+                </MenuItem>
+                <MenuItem Header="导航">
+                    <MenuItem Header="上一页" />
+                    <MenuItem Header="下一页" />
+                    <Separator />
+                    <MenuItem Header="首页" />
+                    <MenuItem Header="尾页" />
+                    <Separator />
+                    <MenuItem Header="下一幅图像" />
+                    <MenuItem Header="上一幅图像" />
+                    <Separator />
+                    <MenuItem Header="下一行" />
+                    <MenuItem Header="上一行" />
+                    <Separator />
+                    <MenuItem Header="下一系列" />
+                    <MenuItem Header="上一系列" />
+                    <Separator />
+                    <MenuItem Header="系列列表" >
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="编辑">
+                    <MenuItem Header="全选" />
+                    <MenuItem Header="反选" />
+                    <MenuItem Header="取消选择" />
+                    <Separator />
+                    <MenuItem Header="复制到剪贴板" />
+                    <Separator />
+                    <MenuItem Header="删除当前标记" />
+                    <MenuItem Header="删除所有标记" />
+                    <MenuItem Header="删除遮挡板" />
+                    <Separator />
+                    <MenuItem Header="关闭当前图像" />
+                    <MenuItem Header="关闭所有图像" />
+                    <MenuItem Header="关闭当前视图" />
+                    <Separator />
+                    <MenuItem Header="取消调图" />
+                </MenuItem>
+                <MenuItem Header="图像">
+                    <MenuItem Header="显示/隐藏查询条件栏" />
+                    <MenuItem Header="显示/隐藏系列列表" />
+                    <MenuItem Header="显示/隐藏图像列表" />
+                </MenuItem>
+                <MenuItem Header="测量">
+                    <MenuItem Header="查询" />
+                    <Separator />
+                    <MenuItem Header="查询全部" />
+                    <Separator />
+                    <MenuItem Header="今天" />
+                    <MenuItem Header="昨天" />
+                    <MenuItem Header="最近三天" />
+                    <Separator />
+                    <MenuItem Header="自定义查询">
+                        <MenuItem Header="今天" />
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="清除" />
+                </MenuItem>
+                <MenuItem Header="应用">
+                    <MenuItem Header="查询" />
+                    <Separator />
+                    <MenuItem Header="查询全部" />
+                    <Separator />
+                    <MenuItem Header="今天" />
+                    <MenuItem Header="昨天" />
+                    <MenuItem Header="最近三天" />
+                    <Separator />
+                    <MenuItem Header="自定义查询">
+                        <MenuItem Header="今天" />
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="清除" />
+                </MenuItem>
+                <MenuItem Header="传输">
+                    <MenuItem Header="导入DICOM文件..." />
+                    <MenuItem Header="从文件夹导入..." />
+                    <MenuItem Header="导出到..." />
+                    <MenuItem Header="发送..." />
+                </MenuItem>
+            </Menu>
+
+            <ToolBarTray HorizontalAlignment="Stretch" Name="toolBarTray1"  Grid.Row="1">
+                <ToolBar HorizontalAlignment="Left" Name="toolBar1" Height="48" >
+                    <Button Name="Button_NextFrame" Click="Button_NextFrame_Click" Height="48" Width="48" >
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vGlass.bmp" />
+                    </Button>
+                    <Button Name="Button_DefaultSize" Click="Button_DefaultSize_Click" Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vPortrait.bmp" />
+                    </Button>
+                    <Button Height="48" Width="48" ToolTip="打开图像" Name="Button_OpenImage" Click="Button_OpenImage_Click">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vPointer.bmp" />
+                    </Button>
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vPrint.bmp" />
+                    </Button>
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vR.bmp" />
+                    </Button>
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vRemovePage.bmp" />
+                    </Button>
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vRepackPage.bmp" />
+                    </Button>
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vResetImg.bmp" />
+                    </Button>
+                </ToolBar>
+                <ToolBar HorizontalAlignment="Left" Name="toolBar2" Height="48">
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vRotateL90.bmp" />
+                    </Button>
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vRotateR90.bmp" />
+                    </Button>
+                </ToolBar>
+                <ToolBar HorizontalAlignment="Left" Name="toolBar3" Height="48" BandIndex="2">
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vRoundingPolygon.bmp" />
+                    </Button>
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vKeepConstant.bmp " />
+                    </Button>
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vPortrait.bmp" />
+                    </Button>
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vInvert.bmp" />
+                    </Button>
+                </ToolBar>
+                <ToolBar HorizontalAlignment="Left" Name="toolBar4" Height="48" BandIndex="3">
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vRoundingPolygon.bmp" />
+                    </Button>
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vKeepConstant.bmp " />
+                    </Button>
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vPortrait.bmp" />
+                    </Button>
+                    <Button Height="48" Width="48">
+                        <Image Source="D:\DCMViewer\DCMViewer\Skin\Icon\vInvert.bmp" />
+                    </Button>
+                </ToolBar>
+            </ToolBarTray>
+
+            <Image Grid.Row="2" Name="Image_DCMImage" />
+            <Line Name="line1" Stroke="Blue" X1="900" Y1="100" X2="900" Y2="200" StrokeThickness="1" Panel.ZIndex="5" Visibility="Hidden" Margin="13,0,-13,0" Grid.RowSpan="3" />
+        </Grid>
+    </Grid>
+</Page>

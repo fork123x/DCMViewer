@@ -36,6 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>window_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dicom">
       <HintPath>.\Dicom.dll</HintPath>
@@ -60,17 +63,41 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Page1.xaml.cs">
+    <Compile Include="Entity\FileEntity.cs" />
+    <Compile Include="Entity\ImageEntity.cs" />
+    <Compile Include="Entity\PatientEntity.cs" />
+    <Compile Include="PageImageDisplay.xaml.cs">
+      <DependentUpon>PageImageDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrameWindow.xaml.cs">
+      <DependentUpon>MainFrameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Unused\Page2.xaml.cs">
+      <DependentUpon>Page2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Unused\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window1.xaml.cs">
+    <Compile Include="PageImportAndQuery.xaml.cs">
+      <DependentUpon>PageImportAndQuery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\EntityUtility.cs" />
+    <Compile Include="Unused\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
-    <Page Include="ImageViewingBoard.xaml">
+    <Page Include="PageImageDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Unused\ImageViewingBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainFrameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Unused\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -78,21 +105,29 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DBUtility.cs" />
-    <Compile Include="DCMDecoder.cs" />
-    <Compile Include="DCMDictionary.cs" />
-    <Compile Include="ImageViewingBoard.xaml.cs">
+    <Compile Include="Unused\DBUtility.cs" />
+    <Compile Include="Unused\DCMDecoder.cs" />
+    <Compile Include="Unused\DCMDictionary.cs" />
+    <Compile Include="Unused\ImageViewingBoard.xaml.cs">
       <DependentUpon>ImageViewingBoard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Unused\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Page1.xaml">
+    <Page Include="Unused\Page2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Window1.xaml">
+    <Page Include="Unused\Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageImportAndQuery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Unused\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -120,6 +155,146 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Skin\Layout\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Skin\Icon\vGlass.bmp" />
+    <Resource Include="Skin\Icon\vPointer.bmp" />
+    <Resource Include="Skin\Icon\vPortrait.bmp" />
+    <Resource Include="Skin\Icon\vPrint.bmp" />
+    <Resource Include="Skin\Icon\vR.bmp" />
+    <Resource Include="Skin\Icon\vRemovePage.bmp" />
+    <Resource Include="Skin\Icon\vRepackPage.bmp" />
+    <Resource Include="Skin\Icon\vResetImg.bmp" />
+    <Resource Include="Skin\Icon\vRotateL90.bmp" />
+    <Resource Include="Skin\Icon\vRotateR90.bmp" />
+    <Resource Include="Skin\Icon\vRoundingPolygon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Skin\Icon\vInsertPage.bmp" />
+    <Resource Include="Skin\Icon\vInversePlay.bmp" />
+    <Resource Include="Skin\Icon\vInversePlayPause.bmp" />
+    <Resource Include="Skin\Icon\vInvert.bmp" />
+    <Resource Include="Skin\Icon\vKeepConstant.bmp" />
+    <Resource Include="Skin\Icon\vL.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Skin\WindowIcon\arrow_down.png" />
+    <Resource Include="Skin\WindowIcon\arrow_left-down.png" />
+    <Resource Include="Skin\WindowIcon\arrow_left-up.png" />
+    <Resource Include="Skin\WindowIcon\arrow_left.png" />
+    <Resource Include="Skin\WindowIcon\arrow_right-down.png" />
+    <Resource Include="Skin\WindowIcon\arrow_right-up.png" />
+    <Resource Include="Skin\WindowIcon\arrow_right.png" />
+    <Resource Include="Skin\WindowIcon\arrow_up.png" />
+    <Resource Include="Skin\WindowIcon\attention.png" />
+    <Resource Include="Skin\WindowIcon\backward.png" />
+    <Resource Include="Skin\WindowIcon\bag.png" />
+    <Resource Include="Skin\WindowIcon\base.png" />
+    <Resource Include="Skin\WindowIcon\bonus.png" />
+    <Resource Include="Skin\WindowIcon\bug.png" />
+    <Resource Include="Skin\WindowIcon\calculator.png" />
+    <Resource Include="Skin\WindowIcon\calendar.png" />
+    <Resource Include="Skin\WindowIcon\cd_dvd.png" />
+    <Resource Include="Skin\WindowIcon\check-64.png" />
+    <Resource Include="Skin\WindowIcon\check.png" />
+    <Resource Include="Skin\WindowIcon\check_2.png" />
+    <Resource Include="Skin\WindowIcon\closed.png" />
+    <Resource Include="Skin\WindowIcon\close_delete.png" />
+    <Resource Include="Skin\WindowIcon\close_delete_2.png" />
+    <Resource Include="Skin\WindowIcon\comment.png" />
+    <Resource Include="Skin\WindowIcon\computer.png" />
+    <Resource Include="Skin\WindowIcon\computer_monitor.png" />
+    <Resource Include="Skin\WindowIcon\copy.png" />
+    <Resource Include="Skin\WindowIcon\credit_card.png" />
+    <Resource Include="Skin\WindowIcon\credit_card_back.png" />
+    <Resource Include="Skin\WindowIcon\cut.png" />
+    <Resource Include="Skin\WindowIcon\delete_2.png" />
+    <Resource Include="Skin\WindowIcon\document_file.png" />
+    <Resource Include="Skin\WindowIcon\email.png" />
+    <Resource Include="Skin\WindowIcon\eraser.png" />
+    <Resource Include="Skin\WindowIcon\favorite_love.png" />
+    <Resource Include="Skin\WindowIcon\flag_mark_blue.png" />
+    <Resource Include="Skin\WindowIcon\flag_mark_gray.png" />
+    <Resource Include="Skin\WindowIcon\flag_mark_green.png" />
+    <Resource Include="Skin\WindowIcon\flag_mark_red.png" />
+    <Resource Include="Skin\WindowIcon\flag_mark_violet.png" />
+    <Resource Include="Skin\WindowIcon\flag_mark_yellow.png" />
+    <Resource Include="Skin\WindowIcon\folder.png" />
+    <Resource Include="Skin\WindowIcon\forward.png" />
+    <Resource Include="Skin\WindowIcon\friends_group.png" />
+    <Resource Include="Skin\WindowIcon\help.png" />
+    <Resource Include="Skin\WindowIcon\help_ring-buoy.png" />
+    <Resource Include="Skin\WindowIcon\home.png" />
+    <Resource Include="Skin\WindowIcon\information.png" />
+    <Resource Include="Skin\WindowIcon\ipod.png" />
+    <Resource Include="Skin\WindowIcon\key_login.png" />
+    <Resource Include="Skin\WindowIcon\lamp_active.png" />
+    <Resource Include="Skin\WindowIcon\lamp_inactive.png" />
+    <Resource Include="Skin\WindowIcon\lock.png" />
+    <Resource Include="Skin\WindowIcon\minus.png" />
+    <Resource Include="Skin\WindowIcon\minus_2.png" />
+    <Resource Include="Skin\WindowIcon\mobile_phone.png" />
+    <Resource Include="Skin\WindowIcon\network.png" />
+    <Resource Include="Skin\WindowIcon\network_close.png" />
+    <Resource Include="Skin\WindowIcon\new_email.png" />
+    <Resource Include="Skin\WindowIcon\next.png" />
+    <Resource Include="Skin\WindowIcon\opened.png" />
+    <Resource Include="Skin\WindowIcon\options.png" />
+    <Resource Include="Skin\WindowIcon\options_2.png" />
+    <Resource Include="Skin\WindowIcon\paste.png" />
+    <Resource Include="Skin\WindowIcon\pause.png" />
+    <Resource Include="Skin\WindowIcon\pencil_edit.png" />
+    <Resource Include="Skin\WindowIcon\pie-chart_diagram.png" />
+    <Resource Include="Skin\WindowIcon\pie-chart_graph.png" />
+    <Resource Include="Skin\WindowIcon\play.png" />
+    <Resource Include="Skin\WindowIcon\plus.png" />
+    <Resource Include="Skin\WindowIcon\plus_2.png" />
+    <Resource Include="Skin\WindowIcon\previous.png" />
+    <Resource Include="Skin\WindowIcon\printer.png" />
+    <Resource Include="Skin\WindowIcon\radio-button_off.png" />
+    <Resource Include="Skin\WindowIcon\radio-button_on.png" />
+    <Resource Include="Skin\WindowIcon\record.png" />
+    <Resource Include="Skin\WindowIcon\refresh.png" />
+    <Resource Include="Skin\WindowIcon\rss.png" />
+    <Resource Include="Skin\WindowIcon\save_as.png" />
+    <Resource Include="Skin\WindowIcon\save_diskette_floppy_disk.png" />
+    <Resource Include="Skin\WindowIcon\search_lense.png" />
+    <Resource Include="Skin\WindowIcon\shield_protect_off.png" />
+    <Resource Include="Skin\WindowIcon\shield_protect_on.png" />
+    <Resource Include="Skin\WindowIcon\shopping_cart.png" />
+    <Resource Include="Skin\WindowIcon\shopping_cart_empty.png" />
+    <Resource Include="Skin\WindowIcon\smartphone_2.png" />
+    <Resource Include="Skin\WindowIcon\smartphone_iphone.png" />
+    <Resource Include="Skin\WindowIcon\sound_music-off.png" />
+    <Resource Include="Skin\WindowIcon\sound_music-on.png" />
+    <Resource Include="Skin\WindowIcon\star.png" />
+    <Resource Include="Skin\WindowIcon\star_2.png" />
+    <Resource Include="Skin\WindowIcon\star_3.png" />
+    <Resource Include="Skin\WindowIcon\stop.png" />
+    <Resource Include="Skin\WindowIcon\stop_2.png" />
+    <Resource Include="Skin\WindowIcon\tag_blue.png" />
+    <Resource Include="Skin\WindowIcon\tag_gray.png" />
+    <Resource Include="Skin\WindowIcon\tag_green.png" />
+    <Resource Include="Skin\WindowIcon\tag_orange.png" />
+    <Resource Include="Skin\WindowIcon\tag_red.png" />
+    <Resource Include="Skin\WindowIcon\tag_violet.png" />
+    <Resource Include="Skin\WindowIcon\tag_white.png" />
+    <Resource Include="Skin\WindowIcon\tag_yellow.png" />
+    <Resource Include="Skin\WindowIcon\time_clock.png" />
+    <Resource Include="Skin\WindowIcon\trash_box.png" />
+    <Resource Include="Skin\WindowIcon\trash_box_2.png" />
+    <Resource Include="Skin\WindowIcon\unlock.png" />
+    <Resource Include="Skin\WindowIcon\user_friend.png" />
+    <Resource Include="Skin\WindowIcon\user_woman.png" />
+    <Resource Include="Skin\WindowIcon\vote_no.png" />
+    <Resource Include="Skin\WindowIcon\vote_yes.png" />
+    <Resource Include="Skin\WindowIcon\window_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="window_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
